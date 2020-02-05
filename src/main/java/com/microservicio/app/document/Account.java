@@ -24,7 +24,7 @@ public class Account {
 	private String id;
 	@NotNull
 	@Size(min = 8, max = 20)
-	private String idcliente;
+	private String idclient;
 	@NotNull
 	@Size(min = 8, max = 20)
 	private String bankname;

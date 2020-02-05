@@ -35,11 +35,19 @@ public class AccountController {
 	@Autowired
 	private IAccountService accountService;
 	
-
+	@PostMapping("/createcollection")
+	@ApiOperation(value = "CRUD", notes="")
+	Mono<Account> createcollection(@RequestBody Account account){
+		//LOGGER.info("AccountController");
+		System.out.println("<<<<<AcountCongroller:"+account.toString());
+		return this.accountService.createcollection(account);
+	}
+	
 	@PostMapping("/create")
 	@ApiOperation(value = "CRUD", notes="")
 	Mono<Account> create(@RequestBody Account account){
 		//LOGGER.info("AccountController");
+		System.out.println("<<<<<AcountCongroller:"+account.toString());
 		return this.accountService.create(account);
 	}
 
@@ -114,5 +122,11 @@ public class AccountController {
 		return this.accountService.updateinterbanktransaction(accountcode,account);
 	}
 	
+	@GetMapping("/findbyidclientclient/{idclient}")
+	@ApiOperation(value = "find all by idpersonal *.*", notes="")	
+	Mono<ClientDto> findByIdClientClient(@PathVariable String idclient){
+		//LOGGER.info("AccountController");
+		return this.accountService.findByIdClientClient(idclient);
+	}
 	
 }

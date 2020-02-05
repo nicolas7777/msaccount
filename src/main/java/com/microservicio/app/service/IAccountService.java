@@ -14,6 +14,7 @@ import reactor.core.publisher.Mono;
 public interface IAccountService {
 	public Mono<Account> updateByAccountCode(String accountcode,  Account account);
 	public Mono<Account> deleteByAccountCode(String accountcode);	
+	public Mono<Account> createcollection (Account account);
 	public Mono<Account> create (Account account);
 	public Mono<Account> updateRetirement(String accountcode, Account account);
 	public Mono<Account> updateDeposit(String accountcode, Account account);
@@ -23,5 +24,7 @@ public interface IAccountService {
 	public Flux<Account> findAll();
 	public Mono<Account> findByAccountCode(String accountcode);
 	public Mono<Account> updateinterbanktransaction(String accountcode,Account account);
+	public Mono<ClientDto> findByIdClientClient(String idclient);
+	
 }
  

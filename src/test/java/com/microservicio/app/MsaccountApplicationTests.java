@@ -36,10 +36,10 @@ class MsaccountApplicationTests {
 			//String sUUID = UUID.randomUUID().toString();
 			Account account = new Account(	
 					null,
-					null,//idcliente
+					"2222222222222222222",//idcliente
 				    "INTERBANK",
 				    "AHORROS",
-				    null,//accountcode
+				    "",//accountcode
 				     0.0, //amount
 				    "",//status
 				    null,//date
@@ -50,7 +50,7 @@ class MsaccountApplicationTests {
 				    0.8 //commission
 		);
 			webTestClient.post()
-			.uri("/account/create")
+			.uri("/account/createcollection")
 			.body(Mono.just(account), Account.class)
 			.exchange()
 			.expectStatus().isOk()

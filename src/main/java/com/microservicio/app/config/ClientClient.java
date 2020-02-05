@@ -1,4 +1,4 @@
-package com.microservicio.app.client;
+package com.microservicio.app.config;
 
 
 import java.util.HashMap;
@@ -36,6 +36,17 @@ public class ClientClient {
 				.uri("/findByDocumentNumber/{documentnumber}",pathVariable)
 				.retrieve()//Perform the HTTP request and retrieve the reponse body:
 				.bodyToFlux(Account.class);//Extract the body to a Mono. By default, if the response has status code 4xx or 5xx,the Mono wil contain a WebClientException. This can be overriddenwith onStatus(Predicate, Function).
+				
+	}
+	
+	public Mono<ClientDto> findByIdClientClient(String idclient){
+		//LOGGER.info("BankingProductClient");
+		Map<String, String> pathVariable = new HashMap<String,String>();
+		pathVariable.put("id",idclient);
+		return webClient.get()
+				.uri("/findbyid/{id}",pathVariable)
+				.retrieve()//Perform the HTTP request and retrieve the reponse body:
+				.bodyToMono(ClientDto.class);//Extract the body to a Mono. By default, if the response has status code 4xx or 5xx,the Mono wil contain a WebClientException. This can be overriddenwith onStatus(Predicate, Function).
 				
 	}
 	

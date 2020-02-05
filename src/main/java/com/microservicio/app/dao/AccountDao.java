@@ -1,4 +1,4 @@
-package com.microservicio.app.repository;
+package com.microservicio.app.dao;
 
 import java.util.List;
 
@@ -11,13 +11,13 @@ import com.microservicio.app.dto.ClientDto;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-public interface AccountRepository extends ReactiveMongoRepository<Account,String> {
+public interface AccountDao extends ReactiveMongoRepository<Account,String> {
 
 	//@Query(value = "{'accountcode' : ?0}")
 	public Mono<Account> findByAccountcode(String accountcode);
 	
 	@Query(value = "{'idclient' : ?0}")
-	public Flux<Account> AllByIdClient(String idClient);
+	public Mono<Account> findByIdclient(String idclient);
 
 }
 
