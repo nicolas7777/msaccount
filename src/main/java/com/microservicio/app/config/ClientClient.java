@@ -28,14 +28,14 @@ public class ClientClient {
 	private WebClient webClient;
 
 	
-	public Flux<Account> getClientByDocumentNumber(String documentnumber){
+	public Mono<ClientDto> getClientByDocumentNumber(String documentnumber){
 		//LOGGER.info("BankingProductClient");
 		Map<String, String> pathVariable = new HashMap<String,String>();
 		pathVariable.put("documentnumber",documentnumber);
 		return webClient.get()
 				.uri("/findByDocumentNumber/{documentnumber}",pathVariable)
 				.retrieve()//Perform the HTTP request and retrieve the reponse body:
-				.bodyToFlux(Account.class);//Extract the body to a Mono. By default, if the response has status code 4xx or 5xx,the Mono wil contain a WebClientException. This can be overriddenwith onStatus(Predicate, Function).
+				.bodyToMono(ClientDto.class);//Extract the body to a Mono. By default, if the response has status code 4xx or 5xx,the Mono wil contain a WebClientException. This can be overriddenwith onStatus(Predicate, Function).
 				
 	}
 	

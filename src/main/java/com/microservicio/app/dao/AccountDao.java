@@ -16,8 +16,8 @@ public interface AccountDao extends ReactiveMongoRepository<Account,String> {
 	//@Query(value = "{'accountcode' : ?0}")
 	public Mono<Account> findByAccountcode(String accountcode);
 	
-	@Query(value = "{'idclient' : ?0}")
-	public Mono<Account> findByIdclient(String idclient);
+	//@Query(value = "{'idclient' : ?0}")
+	public Flux<Account> findByIdclient(String idclient);
 
 }
 

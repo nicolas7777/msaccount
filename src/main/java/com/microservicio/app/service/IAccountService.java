@@ -1,11 +1,9 @@
 package com.microservicio.app.service;
 
-import java.util.Date;
 import java.util.List;
 
-import org.springframework.web.bind.annotation.RequestBody;
-
 import com.microservicio.app.document.Account;
+import com.microservicio.app.dto.BalancesummaryDto;
 import com.microservicio.app.dto.ClientDto;
 
 import reactor.core.publisher.Flux;
@@ -25,6 +23,7 @@ public interface IAccountService {
 	public Mono<Account> findByAccountCode(String accountcode);
 	public Mono<Account> updateinterbanktransaction(String accountcode,Account account);
 	public Mono<ClientDto> findByIdClientClient(String idclient);
+	public Mono<List<BalancesummaryDto>> balancesummary(String documentnumber);
 	
 }
  

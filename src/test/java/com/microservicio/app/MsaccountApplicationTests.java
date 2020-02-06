@@ -1,6 +1,7 @@
 package com.microservicio.app;
 
 import java.util.Date;
+import java.util.UUID;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -32,10 +33,10 @@ class MsaccountApplicationTests {
 	//CRUD:save
 		@Test
 		void saveBank() {
-			mongoTemplate.dropCollection("account").subscribe();
+			//mongoTemplate.dropCollection("account").subscribe();
 			//String sUUID = UUID.randomUUID().toString();
-			Account account = new Account(	
-					null,
+			Account account = new Account(
+					UUID.randomUUID().toString(),
 					"2222222222222222222",//idcliente
 				    "INTERBANK",
 				    "AHORROS",

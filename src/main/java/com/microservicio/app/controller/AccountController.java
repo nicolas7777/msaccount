@@ -2,6 +2,7 @@ package com.microservicio.app.controller;
 
 import java.net.URI;
 import java.util.Date;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.microservicio.app.document.Account;
+import com.microservicio.app.dto.BalancesummaryDto;
 import com.microservicio.app.dto.ClientDto;
 import com.microservicio.app.service.IAccountService;
 
@@ -39,7 +41,6 @@ public class AccountController {
 	@ApiOperation(value = "CRUD", notes="")
 	Mono<Account> createcollection(@RequestBody Account account){
 		//LOGGER.info("AccountController");
-		System.out.println("<<<<<AcountCongroller:"+account.toString());
 		return this.accountService.createcollection(account);
 	}
 	
@@ -123,10 +124,24 @@ public class AccountController {
 	}
 	
 	@GetMapping("/findbyidclientclient/{idclient}")
-	@ApiOperation(value = "find all by idpersonal *.*", notes="")	
+	@ApiOperation(value = "find all by idclient *.*", notes="")	
 	Mono<ClientDto> findByIdClientClient(@PathVariable String idclient){
 		//LOGGER.info("AccountController");
 		return this.accountService.findByIdClientClient(idclient);
 	}
+	
+	@GetMapping("/balancesummary/{documentnumber}")
+	@ApiOperation(value = "balance summary  all account", notes="")	
+	Mono<List<BalancesummaryDto>> balancesummary(@PathVariable String documentnumber){
+		//LOGGER.info("AccountController");
+		return this.accountService.balancesummary(documentnumber);
+	}
+	
+//	@GetMapping("/ssss/{idclient}")
+//	@ApiOperation(value = "find all by idpersonal *.*", notes="")	
+//	Mono<ClientDto> findByIdClientClient(@PathVariable String idclient){
+//		//LOGGER.info("AccountController");
+//		return this.accountService.findByIdClientClient(idclient);
+//	}
 	
 }
